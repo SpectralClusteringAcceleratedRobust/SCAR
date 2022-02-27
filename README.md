@@ -14,8 +14,8 @@ from SpectralClusteringAcceleratedRobust import SCAR
 X, y = make_moons(n_samples=1000, noise=0.09)
 
 k = 2  # number of clusters
-theta = 20  # number of corrupted edges to remove
-alpha = 0.2  # percentage of landmark points
+theta = 20  # max number of corrupted edges to remove
+alpha = 0.2  # portion of landmark points
 num_neighbours = 45  # number of neighbours
 
 """ run RSC accelerated with Nyström (no further modifications) """
