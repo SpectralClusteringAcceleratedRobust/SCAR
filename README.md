@@ -3,9 +3,7 @@
 SCAR is a python library for implementing the Nyström Accelerated Robust Spectral clustering method.
 
 ###  Set Up
-SCAR requires the NumPy, SciPy, pandas, and SciKit-Learn package to operate. To run the evaluation scripts, 
-matplotlib as well as slepc4py/petsc4py for ```DecompositionExperiments.py``` is required. The latter one are only required for all 
-decomposition methods.
+SCAR requires the NumPy, SciPy, pandas, and SciKit-Learn package to operate.
 
 ### Run
 To call SCAR for a dataset (e.g. moon) use:
