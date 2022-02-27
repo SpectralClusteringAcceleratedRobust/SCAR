@@ -113,7 +113,7 @@ class SCAR:
                 raise ValueError("the laplacian {} is not defined".format(self.laplacian))
 
             # calculate eigendecomposition using the Nyström method
-            H, lam, subsample_pos = eigendecompositionNystrom(L, self.k, self.alpha)
+            H, lam = eigendecompositionNystrom(L, self.k, self.alpha)
 
             trace = lam.sum()
 
