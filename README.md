@@ -26,10 +26,3 @@ scar = SCAR(k=k, nn=num_neighbours, alpha=alpha, theta=theta, laplacian=0, norma
 
 ### Licence
 [MIT](https://choosealicense.com/licenses/mit/)
-
----
-
-#### Additional Notes
-- The implementation in the folder ```./DCFCluster``` used for evaluation is copied from the original repository: [https://github.com/tobinjo96/DCFcluster](https://github.com/tobinjo96/DCFcluster)
-- To install slepc4py, please follow the instructions here: [https://slepc.upv.es/slepc4py-current/docs/usrman/install.html#using-pip-or-easy-install](https://slepc.upv.es/slepc4py-current/docs/usrman/install.html#using-pip-or-easy-install) 
-
