@@ -31,6 +31,8 @@ Real world benchmark datasets *iris*, *dermatology*, *banknote*, *pendigits*, an
 
 The synthetic datasets were created with n=1000 and noise=0.15.
 For dermatology we omit the feature about the age of patients as the dataset is incomplete w.r.t this feature. 
+For the pendigits dataset, specific subsets pendigits16 and pendigits146 were defined as benchmark datasets.
+Two random subsamples were selected from the MNIST dataset, with n=10k and n=20k.
 For all other datasets, we used the raw data as provided by the respective repositories as input features without any preprocessing step.
 
 For transparency, further information on how SCAR scored on the tested datasets w.r.t. its hyperparameter settings can be found in [HyperparameterSettings.txt](HyperparameterSettings.txt) or in the paper. 
