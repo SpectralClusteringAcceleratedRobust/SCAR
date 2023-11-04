@@ -4,7 +4,7 @@ import scipy.sparse as sp
 from sklearn.neighbors import kneighbors_graph
 from sklearn.cluster import KMeans
 
-from SCAR.Nystrom import eigendecompositionNystrom
+from Nystrom import eigendecompositionNystrom
 
 
 
