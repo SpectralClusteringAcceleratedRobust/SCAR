@@ -4,7 +4,7 @@ import scipy.sparse as sp
 from sklearn.neighbors import kneighbors_graph
 from sklearn.cluster import KMeans
 
-from Nystrom import eigendecompositionNystrom
+from SCAR.Nystrom import eigendecompositionNystrom
 
 
 
@@ -22,7 +22,7 @@ class SCAR:
     
     """
 
-    def __init__(self, k, nn, alpha, theta=20, m=0.5, laplacian=0, n_iter=50, normalize=False, weighted=False, verbose=False):
+    def __init__(self, k, nn, alpha, theta=20, m=0.5, laplacian=0, n_iter=50, normalize=False, weighted=False, verbose=False, seed=0):
         """
         :param k: number of clusters
         :param nn: number of neighbours to consider for constructing the KNN graph (excluding the node itself)
@@ -34,6 +34,7 @@ class SCAR:
         :param normalize: whether to row normalize the eigenvectors before performing k-means
         :param weighted: use weighted (True) or unweighted (False) k-nn as similarity graph
         :param verbose: verbosity
+        :param seed: random state
         """
 
         self.k = k
@@ -46,6 +47,9 @@ class SCAR:
         self.normalize = normalize
         self.weighted = weighted
         self.verbose = verbose
+        self.seed = seed
+
+        np.random.seed(self.seed)
 
         if laplacian == 0:
             if self.verbose:
@@ -68,7 +72,7 @@ class SCAR:
         :return Ac: corrupted graph, containing all edges identified as noise
         :return H: spectral embedding of the selected graph Laplacian
         """
-        
+
         # compute weighted k-nn graph
         if self.weighted == True:
             A = kneighbors_graph(X=X, n_neighbors=self.nn, metric='euclidean', include_self=False, mode='distance')
@@ -84,7 +88,7 @@ class SCAR:
         # number of nodes
         N = A.shape[0]
         # node degrees
-        deg = A.sum(0).A1  
+        deg = A.sum(0).A1
 
         # check the trace for convergence
         prev_trace = np.inf
@@ -191,7 +195,7 @@ class SCAR:
             self.H = H
 
         # cluster rows of obtained eigenvectors to obtain clutering labels
-        labels = KMeans(n_clusters=self.k).fit_predict(self.H)
+        labels = KMeans(n_clusters=self.k, random_state=self.seed).fit_predict(self.H)
 
         self.labels = labels
         
