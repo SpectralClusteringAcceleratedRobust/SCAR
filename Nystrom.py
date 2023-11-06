@@ -23,8 +23,10 @@ def approximateEigendecomposition(L, k, n, alpha):
     L_1 = L_1_temp[subsample_pos, :]        
     
     # compute eigenvectors of landmark points (normed to length 1)
+
+    v0 = np.random.rand(min(L_1.shape))
     try:
-        lam, H_1 = sp.linalg.eigsh(L_1, k, which='SM', maxiter=1000000)
+        lam, H_1 = sp.linalg.eigsh(L_1, k, which='SM', maxiter=1000000, v0=v0)
     except Exception:
         print("WARNING: eigendecomposition has not converged")
         lam = np.ones(k)
